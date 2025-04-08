@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfxsjt25tmvpa"]
+
+[ext_resource type="Script" uid="uid://oer7qo2p1v5l" path="res://scripts/pickaxe.gd" id="1_40cab"]
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_40cab")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0

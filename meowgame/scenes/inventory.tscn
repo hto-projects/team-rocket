@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj0avmhhwuqio"]
+
+[ext_resource type="Script" uid="uid://ds7dc513yw5mc" path="res://scripts/inventory.gd" id="1_qw0r6"]
+[ext_resource type="PackedScene" uid="uid://cfxsjt25tmvpa" path="res://scenes/pickaxe.tscn" id="2_hj2ta"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_qw0r6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" parent="." instance=ExtResource("2_hj2ta")]
