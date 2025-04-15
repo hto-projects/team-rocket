@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj0avmhhwuqio"]
+[gd_scene load_steps=6 format=3 uid="uid://dj0avmhhwuqio"]
 
 [ext_resource type="Script" uid="uid://ds7dc513yw5mc" path="res://scripts/inventory.gd" id="1_qw0r6"]
 [ext_resource type="PackedScene" uid="uid://cfxsjt25tmvpa" path="res://scenes/pickaxe.tscn" id="2_hj2ta"]
+[ext_resource type="Texture2D" uid="uid://pxfvrccd2sc7" path="res://assets/Diamond_Pickaxe_JE3_BE3.webp" id="3_53g1v"]
+[ext_resource type="Script" uid="uid://bwoffbbix2qit" path="res://scripts/block.gd" id="4_uae8j"]
+[ext_resource type="Texture2D" uid="uid://cvg4wesmy02p6" path="res://assets/stone2_b.jpg" id="4_yyk2a"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -21,3 +24,27 @@ offset_bottom = 40.0
 layout_mode = 2
 
 [node name="TextureRect" parent="." instance=ExtResource("2_hj2ta")]
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+mouse_filter = 2
+texture = ExtResource("3_53g1v")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect2" parent="." instance=ExtResource("2_hj2ta")]
+offset_left = 8.0
+offset_right = 48.0
+script = ExtResource("4_uae8j")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect2"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 7.0
+offset_bottom = 7.0
+mouse_filter = 2
+texture = ExtResource("4_yyk2a")
+expand_mode = 1
