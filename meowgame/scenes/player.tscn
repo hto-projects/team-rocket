@@ -1,19 +1,51 @@
-[gd_scene load_steps=4 format=3 uid="uid://clnju8tqa10xf"]
+[gd_scene load_steps=10 format=3 uid="uid://clnju8tqa10xf"]
 
-[ext_resource type="Texture2D" uid="uid://do0ubcqicjdpd" path="res://assets/cat.jpg" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://biwkdbnrv63os" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://kwdsf6v1hhqw" path="res://player.gd" id="1_fjrip"]
+[ext_resource type="Texture2D" uid="uid://cep1qtwhqkp3l" path="res://assets/dog_walk/dog_walk1.png" id="2_fjrip"]
+[ext_resource type="Texture2D" uid="uid://d2w12uv6kn32v" path="res://assets/dog_walk/dog_walk2.png" id="3_smehm"]
+[ext_resource type="Texture2D" uid="uid://dd38ixtfs0sul" path="res://assets/dog_walk/dog_walk3.png" id="4_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://d04crxa0j81r2" path="res://assets/dog_walk/dog_walk4.png" id="5_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://ls2jpw1gma42" path="res://assets/dog_walk/dog_walk6.png" id="6_d2wvv"]
+[ext_resource type="Texture2D" uid="uid://bpwg704ya5yji" path="res://assets/dog_walk/dog_walk5.png" id="7_3v2ag"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(210, 214)
+[sub_resource type="SpriteFrames" id="SpriteFrames_jej6c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fjrip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_smehm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ur7pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_y4r1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d2wvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_3v2ag")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_g2els")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
+size = Vector2(37.5, 23.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(106.877, 432.75)
-scale = Vector2(0.126816, 0.126816)
-texture = ExtResource("1_3vyb7")
+[node name="Player" type="Area2D"]
+script = ExtResource("1_fjrip")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(107.877, 432.75)
-shape = SubResource("RectangleShape2D_qhqgy")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(103, 447)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_jej6c")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
+position = Vector2(-3.21925, 12.5625)
+shape = SubResource("RectangleShape2D_fjrip")
