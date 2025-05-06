@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ds7dc513yw5mc" path="res://scripts/inventory.gd" id="1_qw0r6"]
 [ext_resource type="PackedScene" uid="uid://cfxsjt25tmvpa" path="res://scenes/pickaxe.tscn" id="2_hj2ta"]
 [ext_resource type="Texture2D" uid="uid://pxfvrccd2sc7" path="res://assets/Diamond_Pickaxe_JE3_BE3.webp" id="3_53g1v"]
-[ext_resource type="Script" uid="uid://bwoffbbix2qit" path="res://scripts/block.gd" id="4_uae8j"]
+[ext_resource type="Script" path="res://scripts/block.gd" id="4_uae8j"]
 [ext_resource type="Texture2D" uid="uid://cvg4wesmy02p6" path="res://assets/stone2_b.jpg" id="4_yyk2a"]
 
 [node name="CanvasLayer" type="CanvasLayer"]

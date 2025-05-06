@@ -1,38 +1,33 @@
-extends Area2D
+extends CharacterBody2D
 
-@export var speed = 400 # How fast the player will move (pixels/sec).
-var screen_size # Size of the game window.
+@export var speed = 100
+@export var gravity = 500
+@export var jump_force = -300
 
-func _ready():
-	screen_size = get_viewport_rect().size
-	
-func _process(delta):
-	var velocity = Vector2.ZERO # The player's movement vector.
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 1
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 1
-	
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-	if velocity.length() > 0:
-		velocity = velocity.normalized() * speed
-		$AnimatedSprite2D.play()
+func _physics_process(delta):
+	if not is_on_floor():
+		velocity.y += gravity * delta
+
+	var dir := Vector2.ZERO
+	if Input.is_action_pressed("ui_right"):
+		dir.x += 1
+	if Input.is_action_pressed("ui_left"):
+		dir.x -= 1
+	if Input.is_action_just_pressed("ui_up") and is_on_floor():
+		velocity.y = jump_force
+
+	velocity.x = dir.x * speed
+	move_and_slide()
+
+	if is_on_floor():
+		if dir.x != 0:
+			if sprite.animation != "walk" or not sprite.is_playing():
+				sprite.play("walk")
+			sprite.flip_h = dir.x < 0
+		else:
+			sprite.stop()
+			sprite.frame = 0
 	else:
-		$AnimatedSprite2D.stop()
-		
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
-	
-	if velocity.x != 0:
-		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_v = false
-	# See the note below about the following boolean assignment.
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		$AnimatedSprite2D.animation = "up"
-		$AnimatedSprite2D.flip_v = velocity.y > 0
-	
-		
-	
-		
-		
+		sprite.stop()
