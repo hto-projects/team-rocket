@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bpgqh4m4pindh"]
+[gd_scene load_steps=13 format=3 uid="uid://bpgqh4m4pindh"]
 
 [ext_resource type="PackedScene" uid="uid://clnju8tqa10xf" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://b73ewnrloog2q" path="res://assets/pixel-art-game-background-with-blue-sky-and-clouds-vector-27802835.jpg" id="1_o6xl0"]
@@ -64,7 +64,14 @@ physics_layer_0/physics_material = SubResource("PhysicsMaterial_jyhfs")
 terrain_set_0/mode = 0
 sources/0 = SubResource("TileSetAtlasSource_o6xl0")
 
+[sub_resource type="Curve2D" id="Curve2D_o6xl0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 792, 424, 0, 0, 0, 0, 1002, 418, 0, 0, 0, 0, 1001, 531, 0, 0, 0, 0, 789, 531, 0, 0, 0, 0, 792, 424)
+}
+point_count = 5
+
 [node name="Main" type="Node2D"]
+position = Vector2(1, 0)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -1224.0
@@ -74,7 +81,7 @@ offset_bottom = 904.0
 texture = ExtResource("1_o6xl0")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(-3, 22)
+position = Vector2(-7, 21)
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(-8, 0)
@@ -89,6 +96,7 @@ scale = Vector2(5, 3)
 texture = ExtResource("2_tefeu")
 
 [node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(0.3, 0.3)
 tile_set = SubResource("TileSet_jyhfs")
 format = 2
 layer_0/tile_data = PackedInt32Array(196612, 0, 0, 262148, 0, 1, 327684, 0, 2, 393220, 0, 3, 196613, 65536, 0, 262149, 65536, 1, 327685, 65536, 2, 393221, 65536, 3, 196614, 131072, 0, 262150, 131072, 1, 327686, 131072, 2, 393222, 131072, 3, 196615, 196608, 0, 262151, 196608, 1, 327687, 196608, 2, 393223, 196608, 3, 196616, 262144, 0, 262152, 262144, 1, 327688, 262144, 2, 393224, 262144, 3, 196617, 0, 0, 262153, 0, 1, 327689, 0, 2, 393225, 0, 3, 196618, 65536, 0, 262154, 65536, 1, 327690, 65536, 2, 393226, 65536, 3, 196619, 131072, 0, 262155, 131072, 1, 327691, 131072, 2, 393227, 131072, 3, 196620, 196608, 0, 262156, 196608, 1, 327692, 196608, 2, 393228, 196608, 3, 196621, 262144, 0, 262157, 262144, 1, 327693, 262144, 2, 393229, 262144, 3, -65529, 0, 0, 7, 0, 1, 65543, 0, 2, 131079, 0, 3, -65528, 65536, 0, 8, 65536, 1, 65544, 65536, 2, 131080, 65536, 3, -65527, 131072, 0, 9, 131072, 1, 65545, 131072, 2, 131081, 131072, 3, -65526, 196608, 0, 10, 196608, 1, 65546, 196608, 2, 131082, 196608, 3, -65525, 262144, 0, 11, 262144, 1, 65547, 262144, 2, 131083, 262144, 3)
@@ -105,3 +113,6 @@ highlight_color = Color(0.388235, 1, 0.921569, 0.886275)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-16, 224)
 zoom = Vector2(0.515, 0.515)
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_o6xl0")
