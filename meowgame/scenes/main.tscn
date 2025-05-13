@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://dhg4lg876tjk8" path="res://scripts/smart_cursor.gd" id="5_tbgi4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
-size = Vector2(2443, 329)
+size = Vector2(4858, 329)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jyhfs"]
 
@@ -79,6 +79,13 @@ offset_right = 1214.0
 offset_bottom = 904.0
 texture = ExtResource("1_o6xl0")
 
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+offset_left = 2431.0
+offset_top = -1.0
+offset_right = 4869.0
+offset_bottom = 1350.0
+texture = ExtResource("1_o6xl0")
+
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(-200, -48)
 
@@ -86,12 +93,17 @@ position = Vector2(-200, -48)
 position = Vector2(-8, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(3.5, 726.5)
+position = Vector2(1211, 726.5)
 shape = SubResource("RectangleShape2D_tefeu")
 
 [node name="Sprite2D" type="Sprite2D" parent="Floor"]
-position = Vector2(1, 360)
+position = Vector2(3, 359)
 scale = Vector2(5, 3)
+texture = ExtResource("2_tefeu")
+
+[node name="2d-pixel-grass" type="Sprite2D" parent="."]
+position = Vector2(2429, 356)
+scale = Vector2(4.98361, 3.02431)
 texture = ExtResource("2_tefeu")
 
 [node name="TileMap" type="TileMap" parent="."]
