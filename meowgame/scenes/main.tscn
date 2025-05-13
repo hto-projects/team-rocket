@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpgqh4m4pindh"]
+[gd_scene load_steps=15 format=3 uid="uid://bpgqh4m4pindh"]
 
 [ext_resource type="PackedScene" uid="uid://clnju8tqa10xf" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://b73ewnrloog2q" path="res://assets/pixel-art-game-background-with-blue-sky-and-clouds-vector-27802835.jpg" id="1_o6xl0"]
@@ -6,10 +6,14 @@
 [ext_resource type="Script" uid="uid://bgbiaavybidju" path="res://scripts/tile_map.gd" id="3_sugp2"]
 [ext_resource type="Texture2D" uid="uid://cvg4wesmy02p6" path="res://assets/stone2_b.jpg" id="3_tefeu"]
 [ext_resource type="PackedScene" uid="uid://dj0avmhhwuqio" path="res://scenes/inventory.tscn" id="4_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://7dfju51iyev" path="res://assets/2d-Pixel-Dirt. png.png" id="4_tipki"]
 [ext_resource type="Script" uid="uid://dhg4lg876tjk8" path="res://scripts/smart_cursor.gd" id="5_tbgi4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
 size = Vector2(4858, 329)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
+size = Vector2(1553, 341.125)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jyhfs"]
 
@@ -80,14 +84,16 @@ offset_bottom = 904.0
 texture = ExtResource("1_o6xl0")
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
 offset_left = 2431.0
 offset_top = -1.0
-offset_right = 4869.0
+offset_right = 4871.0
 offset_bottom = 1350.0
 texture = ExtResource("1_o6xl0")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(-200, -48)
+speed = 400
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(-8, 0)
@@ -101,10 +107,33 @@ position = Vector2(3, 359)
 scale = Vector2(5, 3)
 texture = ExtResource("2_tefeu")
 
+[node name="2d-pixel-dirt_Png" type="Sprite2D" parent="Floor"]
+position = Vector2(2523.84, 768.112)
+scale = Vector2(3.22288, 4.6296)
+texture = ExtResource("4_tipki")
+
 [node name="2d-pixel-grass" type="Sprite2D" parent="."]
-position = Vector2(2429, 356)
-scale = Vector2(4.98361, 3.02431)
+position = Vector2(1474, 654.772)
+scale = Vector2(5.2009, 3.32304)
 texture = ExtResource("2_tefeu")
+region_enabled = true
+region_rect = Rect2(100, 200, 100, 150)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1474, 654.772)
+scale = Vector2(5.2009, 3.32304)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(200.734, -53.9294)
+scale = Vector2(0.192274, 0.300929)
+shape = SubResource("RectangleShape2D_tipki")
+
+[node name="2d-pixel-grass2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(200.35, -106.46)
+scale = Vector2(0.812635, 0.998082)
+texture = ExtResource("2_tefeu")
+region_enabled = true
+region_rect = Rect2(0, 150, 370, 200)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_jyhfs")
@@ -126,3 +155,10 @@ zoom = Vector2(0.515, 0.515)
 
 [node name="MobPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_o6xl0")
+
+[node name="2d-pixel-grass3" type="Sprite2D" parent="."]
+position = Vector2(3473, 567)
+scale = Vector2(4.99388, 3.35951)
+texture = ExtResource("2_tefeu")
+region_enabled = true
+region_rect = Rect2(0, 150, 70, 200)
