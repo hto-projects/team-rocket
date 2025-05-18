@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://7jdq2gp4d0fa"]
+
+[ext_resource type="Texture2D" uid="uid://bn5vdsxw1xb2u" path="res://assets/sword.png" id="1_fl0c6"]
+[ext_resource type="Script" uid="uid://dvdk8uy0oxa1" path="res://scripts/swordattack.gd" id="1_i5cpx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5cpx"]
+size = Vector2(60, 20)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_i5cpx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i5cpx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_fl0c6")

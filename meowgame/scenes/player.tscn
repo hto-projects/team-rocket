@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://clnju8tqa10xf"]
+[gd_scene load_steps=11 format=3 uid="uid://clnju8tqa10xf"]
 
-[ext_resource type="Script" uid="uid://kwdsf6v1hhqw" path="res://player.gd" id="1_fjrip"]
+[ext_resource type="Script" uid="uid://biwkdbnrv63os" path="res://scripts/player.gd" id="1_smehm"]
 [ext_resource type="Texture2D" uid="uid://cep1qtwhqkp3l" path="res://assets/dog_walk/dog_walk1.png" id="2_fjrip"]
 [ext_resource type="Texture2D" uid="uid://d2w12uv6kn32v" path="res://assets/dog_walk/dog_walk2.png" id="3_smehm"]
 [ext_resource type="Texture2D" uid="uid://dd38ixtfs0sul" path="res://assets/dog_walk/dog_walk3.png" id="4_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://d04crxa0j81r2" path="res://assets/dog_walk/dog_walk4.png" id="5_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://ls2jpw1gma42" path="res://assets/dog_walk/dog_walk6.png" id="6_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://bpwg704ya5yji" path="res://assets/dog_walk/dog_walk5.png" id="7_3v2ag"]
+[ext_resource type="PackedScene" uid="uid://7jdq2gp4d0fa" path="res://scenes/sword_attack.tscn" id="8_smehm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jej6c"]
 animations = [{
@@ -38,7 +39,7 @@ animations = [{
 size = Vector2(37.5, 23.5)
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_fjrip")
+script = ExtResource("1_smehm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(103, 447)
@@ -55,3 +56,6 @@ shape = SubResource("RectangleShape2D_fjrip")
 position = Vector2(114, 446)
 offset = Vector2(0, -220)
 zoom = Vector2(0.5, 0.5)
+
+[node name="SwordAttack" parent="." instance=ExtResource("8_smehm")]
+position = Vector2(202, 489)
