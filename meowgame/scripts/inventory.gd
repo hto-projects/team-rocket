@@ -2,11 +2,15 @@ extends Control
 
 var inventory = {
 	"pickaxe": false,
-	"block": false
+	"block": false,
+	"sword": false
 }
 
 func equip_item(item_name: String):
 	if item_name in inventory:
+		# Unequip all other items first
+		for item in inventory:
+			inventory[item] = false
 		inventory[item_name] = true
 		print(item_name + " equipped!")
 

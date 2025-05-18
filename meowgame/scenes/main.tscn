@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dj0avmhhwuqio" path="res://scenes/inventory.tscn" id="4_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://7dfju51iyev" path="res://assets/2d-Pixel-Dirt. png.png" id="4_tipki"]
 [ext_resource type="Script" uid="uid://dhg4lg876tjk8" path="res://scripts/smart_cursor.gd" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dw08185g2lulm" path="res://scenes/health_bar.tscn" id="9_85g3d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
 size = Vector2(4858, 329)
@@ -67,12 +68,6 @@ physics_layer_0/collision_layer = 7
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_jyhfs")
 terrain_set_0/mode = 0
 sources/0 = SubResource("TileSetAtlasSource_o6xl0")
-
-[sub_resource type="Curve2D" id="Curve2D_o6xl0"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 792, 424, 0, 0, 0, 0, 1002, 418, 0, 0, 0, 0, 1001, 531, 0, 0, 0, 0, 789, 531, 0, 0, 0, 0, 792, 424)
-}
-point_count = 5
 
 [node name="Main" type="Node2D"]
 
@@ -153,12 +148,13 @@ highlight_color = Color(0.388235, 1, 0.921569, 0.886275)
 position = Vector2(-16, 224)
 zoom = Vector2(0.515, 0.515)
 
-[node name="MobPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_o6xl0")
-
 [node name="2d-pixel-grass3" type="Sprite2D" parent="."]
 position = Vector2(3473, 567)
 scale = Vector2(4.99388, 3.35951)
 texture = ExtResource("2_tefeu")
 region_enabled = true
 region_rect = Rect2(0, 150, 70, 200)
+
+[node name="Health Bar" parent="." instance=ExtResource("9_85g3d")]
+offset = Vector2(800, 0)
+transform = Transform2D(1, 0, 0, 1, 800, 0)
