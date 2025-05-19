@@ -15,6 +15,12 @@ run/main_scene="uid://djojpreospclj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="viewport"
+
 [input]
 
 move_right={
@@ -41,3 +47,7 @@ swing_sword={
 
 2d_physics/layer_2="Sword"
 2d_physics/layer_4="Enemies"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

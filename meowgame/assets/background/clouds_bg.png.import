@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdvpghtbkenhu"
-path="res://.godot/imported/mob_fly4.png-8e3ee55981e16d2ecae19e0d1f7f227b.ctex"
+uid="uid://dp4td0rdaatta"
+path="res://.godot/imported/clouds_bg.png-55ccf5c586fa5a66865b06f9bccbbb5c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dog_walk/mob_fly/mob_fly4.png"
-dest_files=["res://.godot/imported/mob_fly4.png-8e3ee55981e16d2ecae19e0d1f7f227b.ctex"]
+source_file="res://assets/background/clouds_bg.png"
+dest_files=["res://.godot/imported/clouds_bg.png-55ccf5c586fa5a66865b06f9bccbbb5c.ctex"]
 
 [params]
 

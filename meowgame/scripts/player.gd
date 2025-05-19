@@ -17,6 +17,7 @@ signal health_changed(new_health: float)
 func _ready():
 	current_health = max_health
 	emit_signal("health_changed", current_health)
+	add_to_group("player")
 
 func take_damage(amount: float):
 	current_health = clamp(current_health - amount, 0, max_health)
@@ -70,14 +71,17 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	# Update sword direction based on facing
-	if sword_attack:
-		sword_attack.scale.x = 1 if facing_right else -1
+	if sword_attack and sprite:
+		# Place sword at player's hand height, next to the player
+		var hand_offset = Vector2(48, 16) * (1 if facing_right else -1)
+		sword_attack.position = sprite.position + hand_offset
+		sword_attack.set_facing(facing_right)
 
 	if is_on_floor():
 		if dir.x != 0:
 			if sprite.animation != "walk" or not sprite.is_playing():
 				sprite.play("walk")
-			sprite.flip_h = dir.x < 0
+			sprite.flip_h = facing_right
 		else:
 			sprite.stop()
 			sprite.frame = 0
