@@ -46,20 +46,20 @@ size = Vector2(16, 8)
 size = Vector2(16, 8)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 8
 script = ExtResource("1_nenq2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_otmr2")
 animation = &"fly"
-frame_progress = 0.21446
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_wtq4b")
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 11
-collision_mask = 11
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 4)

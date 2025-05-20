@@ -4,10 +4,12 @@ extends CharacterBody2D
 @export var speed: float = 60.0
 @export var damage: float = 10.0
 @export var patrol_distance: float = 100.0
+@export var knockback_force: float = 300.0
 
 var current_health: float
 var direction: int = 1
 var start_x: float
+var can_damage: bool = true  # Cooldown flag for damage
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $Area2D
@@ -27,6 +29,20 @@ func _physics_process(delta):
 		direction *= -1
 		if sprite:
 			sprite.flip_h = direction < 0
+			
+	# Move and check for collisions
+	var collision = move_and_collide(velocity * delta)
+	if collision:
+		var collider = collision.get_collider()
+		if collider.is_in_group("player") and can_damage:
+			if collider.has_method("take_damage"):
+				collider.take_damage(damage)
+				var knockback = (collider.global_position - global_position).normalized() * knockback_force
+				collider.velocity = knockback
+				
+				can_damage = false
+				var timer = get_tree().create_timer(0.5)
+				timer.timeout.connect(func(): can_damage = true)
 
 func take_damage(amount: float):
 	current_health -= amount
@@ -37,15 +53,21 @@ func die():
 	queue_free()
 
 func _on_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and can_damage:
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
+			
+			# Apply knockback to the player
+			var knockback_direction = (body.global_position - global_position).normalized()
+			if body is CharacterBody2D:
+				body.velocity = knockback_direction * knockback_force
+			
+			# Add damage cooldown
+			can_damage = false
+			var timer = get_tree().create_timer(0.5)  # 0.5 second cooldown
+			timer.timeout.connect(func(): can_damage = true)
 
 func _on_area_entered(area):
-	# SwordAttack is an Area2D, so check for its script/class
-	if area.has_method("take_damage"):
-		# If the sword itself has a take_damage, ignore (shouldn't)
-		return
-	# If the area has a "damage" property, use it, otherwise use a default
-	if area.has_variable("damage"):
-		take_damage(area.damage)
+	var damage_value = area.get("damage")
+	if damage_value != null:
+		take_damage(damage_value)
