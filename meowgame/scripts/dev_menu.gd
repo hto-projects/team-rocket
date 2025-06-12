@@ -9,7 +9,7 @@ var properties = {
 	"Max Health": ["max_health", 100, 0, 1000]
 }
 
-var enemy_scene = preload("res://scenes/enemy.tscn")
+var enemy_scene = preload("res://scenes/enemybig.tscn")
 
 func _ready():
 	var menu = Control.new()

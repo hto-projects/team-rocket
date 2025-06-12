@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bpgqh4m4pindh"]
+[gd_scene load_steps=17 format=3 uid="uid://bpgqh4m4pindh"]
 
 [ext_resource type="PackedScene" uid="uid://clnju8tqa10xf" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Texture2D" uid="uid://djm0vbjqw0oml" path="res://assets/Textures-16.png" id="3_eb6dy"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dusbgtt4rjlph" path="res://scenes/enemy.tscn" id="12_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://3xoqj21vfvyp" path="res://assets/background/clouds_mg_3.png" id="12_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://dfc50ymwakqno" path="res://assets/background/clouds_mg_1_lightened.png" id="13_muem4"]
+[ext_resource type="PackedScene" uid="uid://ylv5asmubhdu" path="res://scenes/enemybig.tscn" id="13_trceg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jyhfs"]
 
@@ -982,5 +983,12 @@ region_enabled = true
 region_rect = Rect2(0, 0, 3000, 279.695)
 
 [node name="enemy" parent="." instance=ExtResource("12_eb6dy")]
-position = Vector2(-144, 528)
+position = Vector2(-256, 448)
 scale = Vector2(3, 3)
+
+[node name="enemy3" parent="." instance=ExtResource("12_eb6dy")]
+position = Vector2(-704, 320)
+scale = Vector2(3, 3)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("13_trceg")]
+position = Vector2(1344, 448)

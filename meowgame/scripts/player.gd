@@ -1,20 +1,21 @@
 extends CharacterBody2D
 
-@export var speed = 400  # Max speed
-@export var acceleration = 2000  # How fast to reach max speed
-@export var friction = 1800  # How fast to slow down
+@export var speed = 400
+@export var acceleration = 2000
+@export var friction = 1800
 @export var gravity = 500
-@export var jump_force = -300
+@export var jump_force = -415
 @export var max_health = 100.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sword_attack: Area2D = $SwordAttack
 @onready var inventory = $"../CanvasLayer/Control"
 
+var bullet_scene: PackedScene
 var current_health: float
 var facing_right := true
 var idle_timer: float = 0.0
-var idle_threshold: float = 0.05  # Changed from 0.5 to 0.05 seconds
+var idle_threshold: float = 0.05
 
 signal health_changed(new_health: float)
 
@@ -22,6 +23,7 @@ func _ready():
 	current_health = max_health
 	emit_signal("health_changed", current_health)
 	add_to_group("player")
+	bullet_scene = load("res://scenes/bullet.tscn")
 
 func take_damage(amount: float):
 	current_health = clamp(current_health - amount, 0, max_health)
@@ -54,6 +56,18 @@ func _input(event):
 		if inventory.is_equipped("sword"):
 			print("Attempting sword swing")
 			sword_attack.swing()
+		elif inventory.is_equipped("handgun"):
+			shoot_at_mouse()
+
+func shoot_at_mouse():
+	var bullet = bullet_scene.instantiate()
+	get_tree().current_scene.add_child(bullet)
+	bullet.position = sprite.global_position
+	
+	var mouse_pos = get_global_mouse_position()
+	bullet.direction = (mouse_pos - bullet.position).normalized()
+	
+	bullet.rotation = bullet.direction.angle()
 
 func _physics_process(delta):
 	var was_on_floor = is_on_floor()

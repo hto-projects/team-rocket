@@ -21,6 +21,10 @@ func _ready():
 		sprite.play("fly")
 	hitbox.body_entered.connect(_on_body_entered)
 	hitbox.area_entered.connect(_on_area_entered)
+	
+	var health_bar = ProgressBar.new()
+	health_bar.set_script(load("res://scripts/enemy_health_bar.gd"))
+	add_child(health_bar)
 
 func _physics_process(delta):
 	# Simple left-right patrol
@@ -48,6 +52,10 @@ func take_damage(amount: float):
 	current_health -= amount
 	if current_health <= 0:
 		die()
+
+	modulate = Color(1, 0, 0, 1)
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color(1, 1, 1, 1), 0.2)
 
 func die():
 	queue_free()

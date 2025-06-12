@@ -3,7 +3,8 @@ extends Control
 var inventory = {
 	"pickaxe": false,
 	"block": false,
-	"sword": false
+	"sword": false,
+	"handgun": false
 }
 
 func equip_item(item_name: String):
