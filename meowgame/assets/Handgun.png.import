@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bljqlqane8akl"
-path="res://.godot/imported/mob_fly1.png-a95569a554ef7ffecd7e3a5bf81cd019.ctex"
+uid="uid://ch1shwo0qfpkv"
+path="res://.godot/imported/Handgun.png-5ed1c05a7263ba31704c1fe83ba3bf45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dog_walk/mob_fly/mob_fly1.png"
-dest_files=["res://.godot/imported/mob_fly1.png-a95569a554ef7ffecd7e3a5bf81cd019.ctex"]
+source_file="res://assets/Handgun.png"
+dest_files=["res://.godot/imported/Handgun.png-5ed1c05a7263ba31704c1fe83ba3bf45.ctex"]
 
 [params]
 
